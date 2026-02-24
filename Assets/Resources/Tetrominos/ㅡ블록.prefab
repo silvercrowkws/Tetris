@@ -469,4 +469,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb9f50dcd1f5ee543ba82eb1b505bf05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cells:
+  - {x: 1, y: 0}
+  - {x: 0, y: 0}
+  - {x: -1, y: 0}
+  - {x: -2, y: 0}
+  position: {x: 0, y: 0}
   fallSpeed: 1

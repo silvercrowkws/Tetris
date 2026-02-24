@@ -1,12 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tetromino : MonoBehaviour
 {
-    float fallTime = 0f;
+    public Vector2Int[] cells;     // 블록 모양 정의
+    public Vector2Int position;    // 현재 grid 위치
+
+    float fallTime;
     public float fallSpeed = 1f;
-    
+
+    void Start()
+    {
+        UpdateVisualPosition();
+    }
+
     void Update()
     {
         HandleInput();
@@ -16,13 +22,13 @@ public class Tetromino : MonoBehaviour
     void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
-            Move(Vector3.left);
+            Move(Vector2Int.left);
 
         else if (Input.GetKeyDown(KeyCode.RightArrow))
-            Move(Vector3.right);
+            Move(Vector2Int.right);
 
         else if (Input.GetKeyDown(KeyCode.DownArrow))
-            Move(Vector3.down);
+            Move(Vector2Int.down);
 
         else if (Input.GetKeyDown(KeyCode.UpArrow))
             Rotate();
@@ -32,45 +38,68 @@ public class Tetromino : MonoBehaviour
     {
         if (Time.time - fallTime >= fallSpeed)
         {
-            Move(Vector3.down);
+            if (!Move(Vector2Int.down))
+            {
+                Lock();
+            }
+
             fallTime = Time.time;
         }
     }
 
-    void Move(Vector3 dir)
+    bool Move(Vector2Int dir)
     {
-        transform.position += dir;
+        Vector2Int newPosition = position + dir;
 
-        if (!Board.IsValidPosition(transform))
+        if (Board.IsValidPosition(cells, newPosition))
         {
-            transform.position -= dir;
-
-            // 아래로 이동 실패 → 블록 고정
-            if (dir == Vector3.down)
-            {
-                Board.AddToGrid(transform);
-                enabled = false;
-
-                // ⭐ 위에 공간이 없으면 게임오버
-                foreach (Transform child in transform)
-                {
-                    if (child.position.y >= Board.height - 1)
-                    {
-                        // 게임 오버 처리
-                        Debug.Log("게임 오버");
-                    }
-                }
-
-                FindObjectOfType<Spawner>().SpawnNext();
-            }
+            position = newPosition;
+            UpdateVisualPosition();
+            return true;
         }
+
+        return false;
     }
 
     void Rotate()
     {
-        transform.Rotate(0, 0, 90);
+        // 시계 방향 회전 (x,y → -y,x)
+        for (int i = 0; i < cells.Length; i++)
+        {
+            cells[i] = new Vector2Int(-cells[i].y, cells[i].x);
+        }
 
-        if (!Board.IsValidPosition(transform))
-            transform.Rotate(0, 0, -90);
+        if (!Board.IsValidPosition(cells, position))
+        {
+            // 실패 시 복구 (반시계 회전)
+            for (int i = 0; i < cells.Length; i++)
+            {
+                cells[i] = new Vector2Int(cells[i].y, -cells[i].x);
+            }
+        }
+
+        UpdateVisualPosition();
+    }
+
+    public void UpdateVisualPosition()
+    {
+        for (int i = 0; i < cells.Length; i++)
+        {
+            Vector3 worldPos = new Vector3(
+                (cells[i].x + position.x) * Board.cellSize,
+                (cells[i].y + position.y) * Board.cellSize,
+                0
+            );
+
+            transform.GetChild(i).position = worldPos;
+        }
+    }
+
+    void Lock()
+    {
+        Board.AddToGrid(transform, cells, position);
+        enabled = false;
+
+        FindObjectOfType<Spawner>().SpawnNext();
     }
 }

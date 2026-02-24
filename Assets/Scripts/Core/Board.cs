@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -7,57 +5,54 @@ public class Board : MonoBehaviour
     public static int width = 10;
     public static int height = 20;
 
+    public static float cellSize = 0.205f;
+
+    // 보드 데이터 (정수 그리드 기반)
     public static Transform[,] grid = new Transform[width, height];
 
-    // 좌표 반올림
-    public static Vector2 Round(Vector2 pos)
+    // 보드 범위 체크
+    public static bool InsideBoard(Vector2Int pos)
     {
-        return new Vector2(Mathf.Round(pos.x), Mathf.Round(pos.y));
-    }
-
-    // 보드 내부 체크
-    public static bool InsideBoard(Vector2 pos)
-    {
-        return (int)pos.x >= 0 &&
-               (int)pos.x < width &&
-               (int)pos.y >= 0;
+        return pos.x >= 0 &&
+               pos.x < width &&
+               pos.y >= 0 &&
+               pos.y < height;
     }
 
     // 위치 유효성 검사
-    public static bool IsValidPosition(Transform block)
+    public static bool IsValidPosition(Vector2Int[] cells, Vector2Int position)
     {
-        foreach (Transform child in block)
+        foreach (Vector2Int cell in cells)
         {
-            Vector2 pos = Round(child.position);
+            Vector2Int tilePos = cell + position;
 
-            if (!InsideBoard(pos))
+            if (!InsideBoard(tilePos))
                 return false;
 
-            if (pos.y < height)
-            {
-                if (grid[(int)pos.x, (int)pos.y] != null)
-                    return false;
-            }
+            if (grid[tilePos.x, tilePos.y] != null)
+                return false;
         }
+
         return true;
     }
 
-    // 그리드에 등록
-    public static void AddToGrid(Transform block)
+    // 블록 고정
+    public static void AddToGrid(Transform block, Vector2Int[] cells, Vector2Int position)
     {
-        foreach (Transform child in block)
+        for (int i = 0; i < cells.Length; i++)
         {
-            Vector2 pos = Round(child.position);
-            grid[(int)pos.x, (int)pos.y] = child;
+            Vector2Int tilePos = cells[i] + position;
+
+            if (tilePos.y >= height)
+                continue;
+
+            grid[tilePos.x, tilePos.y] = block.GetChild(i);
         }
 
-        ClearLines(); // ⭐ 블록 고정 후 라인 체크
+        ClearLines();
     }
 
-    // ==============================
-    // 🔥 여기부터 라인 클리어 시스템
-    // ==============================
-
+    // 줄 삭제
     public static void ClearLines()
     {
         for (int y = 0; y < height; y++)
@@ -66,22 +61,23 @@ public class Board : MonoBehaviour
             {
                 DeleteLine(y);
                 ShiftDown(y);
-                y--; // 같은 줄 다시 검사
+                y--;
             }
         }
     }
 
-    public static bool IsLineFull(int y)
+    static bool IsLineFull(int y)
     {
         for (int x = 0; x < width; x++)
         {
             if (grid[x, y] == null)
                 return false;
         }
+
         return true;
     }
 
-    public static void DeleteLine(int y)
+    static void DeleteLine(int y)
     {
         for (int x = 0; x < width; x++)
         {
@@ -90,7 +86,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    public static void ShiftDown(int deletedY)
+    static void ShiftDown(int deletedY)
     {
         for (int y = deletedY + 1; y < height; y++)
         {
@@ -101,10 +97,31 @@ public class Board : MonoBehaviour
                     grid[x, y - 1] = grid[x, y];
                     grid[x, y] = null;
 
-                    grid[x, y - 1].position += Vector3.down;
+                    grid[x, y - 1].position += Vector3.down * cellSize;
                 }
             }
         }
     }
-}
 
+    // 디버그용 그리드 표시
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.gray;
+
+        for (int x = 0; x <= width; x++)
+        {
+            Gizmos.DrawLine(
+                new Vector3(x * cellSize, 0, 0),
+                new Vector3(x * cellSize, height * cellSize, 0)
+            );
+        }
+
+        for (int y = 0; y <= height; y++)
+        {
+            Gizmos.DrawLine(
+                new Vector3(0, y * cellSize, 0),
+                new Vector3(width * cellSize, y * cellSize, 0)
+            );
+        }
+    }
+}
