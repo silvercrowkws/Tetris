@@ -16,47 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 79c397c389f63dd43b932dcd640c8899
-  m_SerializeEntries:
-  - m_GUID: b5448bfb8887b13479391ff56d965b8b
-    m_Address: "Assets/Prefabs/Tetrominos/Addressables_\u3131\uBE14\uB85D.prefab"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4739cdd4db9587948b7e711b6ce9e4af
-    m_Address: "Assets/Prefabs/Tetrominos/Addressables_\u3139\uBE14\uB85D.prefab"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6a2184c7d1990024098ba64814a154e5
-    m_Address: "Assets/Prefabs/Tetrominos/Addressables_\u3157\uBE14\uB85D.prefab"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cf4a37895f7398444bf99d45cf345ffa
-    m_Address: "Assets/Prefabs/Tetrominos/Addressables_\u315C\uBE14\uB85D.prefab"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4c586b203365a0447bf388778a2bd6f5
-    m_Address: "Assets/Prefabs/Tetrominos/Addressables_\u3163\uBE14\uB85D.prefab"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 343bcca3261200145af03cee64b37d89
-    m_Address: "Assets/Prefabs/Tetrominos/Addressables_\u3141\uBE14\uB85D.prefab"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e7a86e55fe189a24d8c408933cd0d3cf
-    m_Address: "Assets/Prefabs/Tetrominos/Addressables_\u3161\uBE14\uB85D.prefab"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5f27b762401f98b4ea003868d17e4304
-    m_Address: "Assets/Prefabs/Tetrominos/Addressables_\u3134\uBE14\uB85D.prefab"
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5329e876622fbbd4c9115a88199b8a85, type: 2}
   m_SchemaSet:

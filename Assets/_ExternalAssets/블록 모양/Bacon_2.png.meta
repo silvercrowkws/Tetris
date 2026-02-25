@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 75023c0d66e39184eaf8153e7fb7cfc6
+guid: 0b3cdca197f1b7d439ab95ca08c87529
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1700
+  spritePixelsToUnits: 1000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,85 +136,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: T-BoneSteak_0
+      name: Bacon_2_19
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
-        width: 341.33334
-        height: 512
+        x: 438
+        y: 586
+        width: 219
+        height: 219
       alignment: 9
-      pivot: {x: 0.55, y: 0.4}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d059b902db8bc942995652dc89311f9
-      internalID: 1458883099
+      spriteID: 0cf1d0d2e56353e4a9069a82ca589921
+      internalID: 1869551936
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: T-BoneSteak_1
+      name: Bacon_2_16
       rect:
         serializedVersion: 2
-        x: 341
-        y: 512
-        width: 341.33334
-        height: 512
+        x: 221
+        y: 586
+        width: 219
+        height: 219
       alignment: 9
-      pivot: {x: 0.5, y: 0.4}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3d1077606f55ab458b870441f117806
-      internalID: 577692498
+      spriteID: c218988bd1719614083d0cf36e127de9
+      internalID: 1284836673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: T-BoneSteak_2
+      name: Bacon_2_36
       rect:
         serializedVersion: 2
-        x: 682
-        y: 512
-        width: 341.33334
-        height: 512
+        x: 365
+        y: 367
+        width: 219
+        height: 219
       alignment: 9
-      pivot: {x: 0.45, y: 0.4}
+      pivot: {x: 0.55, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0730e1e986350584ba6e0142fbf83b36
-      internalID: 1106447368
+      spriteID: 172a2b5c8b5368146a5182642a33d32b
+      internalID: 148809489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: T-BoneSteak_4
+      name: Bacon_2_39
       rect:
         serializedVersion: 2
-        x: 341
-        y: 0
-        width: 341.33334
-        height: 512
+        x: 584
+        y: 367
+        width: 219
+        height: 219
       alignment: 9
-      pivot: {x: 0.5, y: 0.75}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43233787ffa49904e8a0716b66c744f8
-      internalID: -1758120005
+      spriteID: 2a8faab6f3438c8439f1260152912eea
+      internalID: -1715272009
       vertices: []
       indices: 
       edges: []
@@ -230,12 +230,64 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      T-BoneSteak_0: 1458883099
-      T-BoneSteak_1: 577692498
-      T-BoneSteak_2: 1106447368
-      T-BoneSteak_3: -33076945
-      T-BoneSteak_4: -1758120005
-      T-BoneSteak_5: -986265492
+      Bacon_2_0: -187872268
+      Bacon_2_1: -1587951435
+      Bacon_2_10: 83979271
+      Bacon_2_11: 707902594
+      Bacon_2_12: -1239802319
+      Bacon_2_13: -1775550926
+      Bacon_2_14: 1682251969
+      Bacon_2_15: 1527255045
+      Bacon_2_16: 1284836673
+      Bacon_2_17: 1679181118
+      Bacon_2_18: 904342747
+      Bacon_2_19: 1869551936
+      Bacon_2_2: 1411960940
+      Bacon_2_20: 1867475897
+      Bacon_2_21: 2118783561
+      Bacon_2_22: 1598519823
+      Bacon_2_23: 1928962436
+      Bacon_2_24: -1200517008
+      Bacon_2_25: -426931398
+      Bacon_2_26: 177156199
+      Bacon_2_27: -2099029025
+      Bacon_2_28: -1515415817
+      Bacon_2_29: 1607727720
+      Bacon_2_3: -1936594922
+      Bacon_2_30: 841931986
+      Bacon_2_31: 1960250779
+      Bacon_2_32: -1835518360
+      Bacon_2_33: -1860630683
+      Bacon_2_34: 330461075
+      Bacon_2_35: 1517595120
+      Bacon_2_36: 148809489
+      Bacon_2_37: -1610574432
+      Bacon_2_38: -1907026497
+      Bacon_2_39: -1715272009
+      Bacon_2_4: -1984322478
+      Bacon_2_40: -1109703300
+      Bacon_2_41: 867663811
+      Bacon_2_42: 536301033
+      Bacon_2_43: 2101136293
+      Bacon_2_44: -351418131
+      Bacon_2_45: -297599633
+      Bacon_2_46: 437347471
+      Bacon_2_47: 780353386
+      Bacon_2_48: -1359616474
+      Bacon_2_49: 786687543
+      Bacon_2_5: 256089164
+      Bacon_2_50: -950052056
+      Bacon_2_51: 1349654188
+      Bacon_2_52: 811851439
+      Bacon_2_53: -1009108013
+      Bacon_2_54: 627499716
+      Bacon_2_55: -1900810658
+      Bacon_2_56: 1356492979
+      Bacon_2_57: 24372143
+      Bacon_2_6: 1695081148
+      Bacon_2_7: 805437732
+      Bacon_2_8: -949482154
+      Bacon_2_9: 1213908028
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

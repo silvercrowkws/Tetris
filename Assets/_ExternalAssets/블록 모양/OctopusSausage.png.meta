@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: OctopusSausage_3
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 513
+        width: 341
+        height: 342
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 448bcd81a13a39c46abb2148d73c01f1
+      internalID: -1164403187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OctopusSausage_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 171
+        width: 341
+        height: 342
+      alignment: 9
+      pivot: {x: 0.8, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409a3b5f66575f2499281b7bfd04ce80
+      internalID: -257359800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OctopusSausage_9
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 171
+        width: 341
+        height: 342
+      alignment: 9
+      pivot: {x: 0.5, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1540109eb95534548b509947a2cee566
+      internalID: 2120997204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OctopusSausage_10
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 171
+        width: 341
+        height: 342
+      alignment: 9
+      pivot: {x: 0.2, y: 0.65}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 974285e878aaf064396848a8b6a8ed2e
+      internalID: -885310210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +229,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      OctopusSausage_0: -2137021243
+      OctopusSausage_1: -1293624569
+      OctopusSausage_10: -885310210
+      OctopusSausage_11: -1934855469
+      OctopusSausage_2: 2021271043
+      OctopusSausage_3: -1164403187
+      OctopusSausage_4: -272379710
+      OctopusSausage_5: 689398502
+      OctopusSausage_6: 382602730
+      OctopusSausage_7: -346849570
+      OctopusSausage_8: -257359800
+      OctopusSausage_9: 2120997204
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

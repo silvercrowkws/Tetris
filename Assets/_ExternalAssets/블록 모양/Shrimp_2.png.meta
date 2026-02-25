@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Shrimp_2_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 256
+        height: 512
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5cd630bd916494681263cc9f64404e
+      internalID: 412121748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrimp_2_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 512
+        width: 256
+        height: 512
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc574373f7761b340b727919a6a16749
+      internalID: -326784982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrimp_2_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 256
+        height: 512
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b7ef2d08529966409a9f6f32dda0cbd
+      internalID: -96523342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shrimp_2_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 512
+        height: 512
+      alignment: 9
+      pivot: {x: 0.75, y: 0.8}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 896e50be9d9acf743aa8c2e032309735
+      internalID: -328312747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +229,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Shrimp_2_0: -495653754
+      Shrimp_2_1: 412121748
+      Shrimp_2_10: 477965647
+      Shrimp_2_11: -328312747
+      Shrimp_2_12: -981888049
+      Shrimp_2_13: -789069579
+      Shrimp_2_14: -959407026
+      Shrimp_2_15: 1575444375
+      Shrimp_2_2: 1341290697
+      Shrimp_2_3: -96523342
+      Shrimp_2_4: 1862744832
+      Shrimp_2_5: -326784982
+      Shrimp_2_6: -1231890634
+      Shrimp_2_7: 1815200861
+      Shrimp_2_8: 1681631638
+      Shrimp_2_9: -1871225747
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

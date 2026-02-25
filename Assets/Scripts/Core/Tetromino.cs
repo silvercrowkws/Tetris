@@ -86,12 +86,15 @@ public class Tetromino : MonoBehaviour
         for (int i = 0; i < cells.Length; i++)
         {
             Vector3 worldPos = new Vector3(
-                (cells[i].x + position.x) * Board.cellSize,
-                (cells[i].y + position.y) * Board.cellSize,
+                (cells[i].x + position.x - 0.5f) * Board.cellSize,
+                (cells[i].y + position.y - 0.5f) * Board.cellSize,
                 0
             );
 
             transform.GetChild(i).position = worldPos;
+
+            /*if (i == 0)
+                Debug.Log("X = " + worldPos.x);*/
         }
     }
 

@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Croissant_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 513
+        width: 341
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6e5a1de7306c34098c02ca5e6faa3c
+      internalID: 6764965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Croissant_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 173
+        width: 341
+        height: 342
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b6c231a361ef44fa632d110bc572d9
+      internalID: -384185198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Croissant_10
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 173
+        width: 341
+        height: 513
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed23f3a39e6ba584bb4733979ccb9ea4
+      internalID: 737375537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Croissant_11
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 173
+        width: 341
+        height: 513
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d85f487bad678b4e98e401b880dd670
+      internalID: 1689046673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +229,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Croissant_0: -256011032
+      Croissant_1: 1137363095
+      Croissant_10: 737375537
+      Croissant_11: 1689046673
+      Croissant_12: 1216237300
+      Croissant_2: 6764965
+      Croissant_3: -1278334629
+      Croissant_4: 1777074680
+      Croissant_5: 2083353442
+      Croissant_6: 779719403
+      Croissant_7: 776553963
+      Croissant_8: 1290622322
+      Croissant_9: -384185198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
