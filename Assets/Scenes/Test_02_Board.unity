@@ -929,7 +929,7 @@ GameObject:
   - component: {fileID: 1967573574}
   - component: {fileID: 1967573575}
   m_Layer: 0
-  m_Name: Test_01_Sprites
+  m_Name: Test_02_Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -959,11 +959,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1967573573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5cacfc1c67dcb409d3ca6a94c59799, type: 3}
+  m_Script: {fileID: 11500000, guid: 610a19b2d8115474dab0cf02972308bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   seed: -1
   rotationObject: {fileID: 0}
+  index: 0100000000000000020000000300000004000000050000000600000007000000
+  isCustom: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

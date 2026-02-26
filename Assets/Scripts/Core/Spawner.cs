@@ -17,6 +17,16 @@ public class Spawner : MonoBehaviour
         SpawnNext();
     }
 
+    /// <summary>
+    /// 테스트용 인덱스 배열을 받아서 bag을 초기화하는 함수
+    /// </summary>
+    /// <param name="customIndices"></param>
+    public void SetCustomSequence(int[] customIndices)
+    {
+        bag.Clear();                        // 기존 내용 비우기
+        bag.AddRange(customIndices);        // 넘겨받은 배열로 가방 채우기
+    }
+
     public void SpawnNext()
     {
         if (bag.Count == 0)
