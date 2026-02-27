@@ -7,8 +7,38 @@ public class Board : MonoBehaviour
 
     public static float cellSize = 0.205f;
 
+    [Header("Game Grid Debug")]
+    public Material lineMaterial;   // Unlit Color 머티리얼
+    public Color gridColor = new Color(1f, 0.8f, 0.6f, 1f); // 살구색
+
+    Transform gridParent;   // GridLines 부모
+
     // 보드 데이터 (정수 그리드 기반)
     public static Transform[,] grid = new Transform[width, height];
+
+    void Start()
+    {
+        CreateGridParent();
+        DrawGameGrid();
+    }
+
+    void CreateGridParent()
+    {
+        // 이미 있다면 재사용
+        Transform existing = transform.Find("GridLines");
+
+        if (existing != null)
+        {
+            gridParent = existing;
+            return;
+        }
+
+        GameObject parentObj = new GameObject("GridLines");
+        parentObj.transform.SetParent(transform);
+        parentObj.transform.localPosition = Vector3.zero;
+
+        gridParent = parentObj.transform;
+    }
 
     // 보드 범위 체크
     public static bool InsideBoard(Vector2Int pos)
@@ -123,5 +153,49 @@ public class Board : MonoBehaviour
                 new Vector3(width * cellSize, y * cellSize, 0)
             );
         }
+    }
+
+    void DrawGameGrid()
+    {
+        // 세로선
+        for (int x = 0; x <= width; x++)
+        {
+            CreateLine(
+                new Vector3(x * cellSize, 0, 0),
+                new Vector3(x * cellSize, height * cellSize, 0)
+            );
+        }
+
+        // 가로선
+        for (int y = 0; y <= height; y++)
+        {
+            CreateLine(
+                new Vector3(0, y * cellSize, 0),
+                new Vector3(width * cellSize, y * cellSize, 0)
+            );
+        }
+    }
+
+    void CreateLine(Vector3 start, Vector3 end)
+    {
+        GameObject lineObj = new GameObject("GridLine");
+        lineObj.transform.SetParent(gridParent);
+        lineObj.transform.localPosition = Vector3.zero;
+
+        LineRenderer lr = lineObj.AddComponent<LineRenderer>();
+
+        lr.positionCount = 2;
+        lr.SetPosition(0, start);
+        lr.SetPosition(1, end);
+
+        lr.startWidth = 0.01f;
+        lr.endWidth = 0.01f;
+
+        lr.material = lineMaterial;
+        lr.startColor = gridColor;
+        lr.endColor = gridColor;
+
+        lr.useWorldSpace = false;
+        lr.sortingOrder = 100;
     }
 }

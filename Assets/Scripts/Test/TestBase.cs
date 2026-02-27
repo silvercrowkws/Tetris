@@ -12,7 +12,7 @@ public class TestBase : MonoBehaviour
     const int allRandom = -1;
     protected TestInputActions inputActions;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         inputActions = new TestInputActions();
 

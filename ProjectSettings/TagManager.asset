@@ -41,12 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 1576782717
-    locked: 0
   - name: Block
-    uniqueID: 2760224011
+    uniqueID: 243255809
     locked: 0
   - name: Food
-    uniqueID: 2137284361
+    uniqueID: 640693901
     locked: 0

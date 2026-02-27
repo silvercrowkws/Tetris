@@ -11,13 +11,17 @@ public class Test_02_Board : TestBase
 
     public int[] index;
 
+    public Spawner spawner;
+
     public bool isCustom;
 
-    private void Start()
+
+    protected override void Awake()
     {
+        base.Awake();
         // (참고: TestBase에 Awake가 정의되어 있다면 protected override void Awake() 로 작성하고 base.Awake()를 호출하세요)
 
-        Spawner spawner = FindFirstObjectByType<Spawner>(); // 씬에서 Spawner 찾기 (Unity 2023 이상 권장, 구버전은 FindObjectOfType)
+        //Spawner spawner = FindFirstObjectByType<Spawner>(); // 씬에서 Spawner 찾기 (Unity 2023 이상 권장, 구버전은 FindObjectOfType)
 
         // 인스펙터에 설정된 배열이 존재할 때만 전달
         if (isCustom)
