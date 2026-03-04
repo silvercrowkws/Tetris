@@ -923,12 +923,12 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 3
-  activeInputHandler: 0
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
   cloudProjectId: d5fd546d-c3c0-458d-acb2-511c0035dab7
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
+  projectName: Tetris 2026-02-02_13-35-18
   organizationId: silvercrowkws1
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 1

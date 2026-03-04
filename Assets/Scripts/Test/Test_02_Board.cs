@@ -57,6 +57,6 @@ public class Test_02_Board : TestBase
 
     protected override void OnTest3(InputAction.CallbackContext context)
     {
-
+        Debug.Log("3번 버튼 클릭");
     }
 }

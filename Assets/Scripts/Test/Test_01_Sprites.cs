@@ -30,4 +30,9 @@ public class Test_01_Sprites : TestBase
             rotationObject.SetActive(false);
         }
     }
+
+    protected override void OnTest3(InputAction.CallbackContext context)
+    {
+        Debug.Log("3번 클릭");
+    }
 }

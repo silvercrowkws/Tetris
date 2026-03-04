@@ -48,7 +48,7 @@ public class Spawner : MonoBehaviour
         // 🔥 화면 위에서 정확히 시작하도록 보정
         int spawnY = Board.height - 1 - maxCellY;
 
-        tetromino.position = new Vector2Int(spawnX, spawnY);
+        tetromino.tetrominoPosition = new Vector2Int(spawnX, spawnY);
 
         tetromino.UpdateVisualPosition();
     }
