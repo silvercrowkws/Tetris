@@ -6,6 +6,8 @@ public class Spawner : MonoBehaviour
     private GameObject[] tetrominos;
     private List<int> bag = new List<int>();
 
+    public Tetromino currentTetromino; // 현재 활성 Tetromino
+
     private void Awake()
     {
         // Resources/Tetrominos 폴더 안 프리팹 로드
@@ -51,6 +53,9 @@ public class Spawner : MonoBehaviour
         tetromino.tetrominoPosition = new Vector2Int(spawnX, spawnY);
 
         tetromino.UpdateVisualPosition();
+
+        // 현재 블록으로 등록
+        currentTetromino = tetromino;
     }
 
     private int GetMaxCellY(Vector2Int[] cells)

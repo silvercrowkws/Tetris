@@ -115,7 +115,7 @@ public class Tetromino : MonoBehaviour
         }
     }
 
-    bool Move(Vector2Int dir)
+    public bool Move(Vector2Int dir)
     {
         Vector2Int newPosition = tetrominoPosition + dir;
 
@@ -131,7 +131,7 @@ public class Tetromino : MonoBehaviour
 
     int shapeRotationZ = 0;
 
-    void Rotate()
+    public void Rotate()
     {
         /*// 시계 방향 회전 (x,y → -y,x)
         for (int i = 0; i < cells.Length; i++)
@@ -237,7 +237,7 @@ public class Tetromino : MonoBehaviour
     void Lock()
     {
         Board.AddToGrid(transform, cells, tetrominoPosition);
-        enabled = false;
+        enabled = false;        // 스크립트 비활성화 처리
 
         FindObjectOfType<Spawner>().SpawnNext();
     }
