@@ -18,9 +18,16 @@ public class Tetromino : MonoBehaviour
     /// </summary>
     Vector2 moveInput;
 
+    Transform[] shapes;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
+
+        // Shape 태그를 가진 자식들 캐싱
+        shapes = GetComponentsInChildren<Transform>();
+
+        shapes = Array.FindAll(shapes, t => t.CompareTag("Shape"));
     }
 
     private void OnEnable()
@@ -122,9 +129,11 @@ public class Tetromino : MonoBehaviour
         return false;
     }
 
+    int shapeRotationZ = 0;
+
     void Rotate()
     {
-        // 시계 방향 회전 (x,y → -y,x)
+        /*// 시계 방향 회전 (x,y → -y,x)
         for (int i = 0; i < cells.Length; i++)
         {
             cells[i] = new Vector2Int(-cells[i].y, cells[i].x);
@@ -137,6 +146,72 @@ public class Tetromino : MonoBehaviour
             {
                 cells[i] = new Vector2Int(cells[i].y, -cells[i].x);
             }
+        }
+        else
+        {
+            // 회전 성공 시 Shape 태그를 가진 자식들 같이 회전
+            shapeRotationZ = (shapeRotationZ + 90) % 360;
+            // 90, 180, 270, 0 반복
+
+            Debug.Log(shapeRotationZ);
+
+            foreach (Transform shape in shapes)
+            {
+                shape.localRotation = Quaternion.Euler(0, 0, shapeRotationZ);
+                Debug.Log("Shape 회전");
+            }
+        }
+
+        UpdateVisualPosition();*/
+
+
+
+
+        // 회전
+        for (int i = 0; i < cells.Length; i++)
+        {
+            cells[i] = new Vector2Int(-cells[i].y, cells[i].x);
+        }
+
+        // Wall Kick 후보 위치
+        Vector2Int[] kicks =
+        {
+        Vector2Int.zero,
+        Vector2Int.right,
+        Vector2Int.left,
+        Vector2Int.up,
+        new Vector2Int(2,0),
+        new Vector2Int(-2,0)
+    };
+
+        bool rotated = false;
+
+        foreach (Vector2Int kick in kicks)
+        {
+            if (Board.IsValidPosition(cells, tetrominoPosition + kick))
+            {
+                tetrominoPosition += kick;
+                rotated = true;
+                break;
+            }
+        }
+
+        if (!rotated)
+        {
+            // 실패 시 회전 되돌리기
+            for (int i = 0; i < cells.Length; i++)
+            {
+                cells[i] = new Vector2Int(cells[i].y, -cells[i].x);
+            }
+            return;
+        }
+
+        // 회전 성공 시 Shape 회전
+        shapeRotationZ = (shapeRotationZ + 90) % 360;
+
+        foreach (Transform shape in shapes)
+        {
+            shape.localRotation = Quaternion.Euler(0, 0, shapeRotationZ);
         }
 
         UpdateVisualPosition();

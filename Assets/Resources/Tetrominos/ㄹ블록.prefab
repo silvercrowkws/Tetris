@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4030637869360876468}
   m_Layer: 0
   m_Name: Shape
-  m_TagString: Untagged
+  m_TagString: Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4540353200105927163}
   m_Layer: 0
   m_Name: Shape
-  m_TagString: Untagged
+  m_TagString: Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 6686703328197597148}
   m_Layer: 0
   m_Name: Shape
-  m_TagString: Untagged
+  m_TagString: Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 0, y: -1}
   - {x: 1, y: -1}
-  position: {x: 0, y: 0}
+  tetrominoPosition: {x: 0, y: 0}
   fallSpeed: 1
 --- !u!1 &5650914551554341909
 GameObject:
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 8259182495251813162}
   m_Layer: 0
   m_Name: Shape
-  m_TagString: Untagged
+  m_TagString: Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
