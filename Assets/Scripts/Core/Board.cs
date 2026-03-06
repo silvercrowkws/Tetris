@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -40,7 +41,11 @@ public class Board : MonoBehaviour
         gridParent = parentObj.transform;
     }
 
-    // 보드 범위 체크
+    /// <summary>
+    /// 보드 범위 체크
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
     public static bool InsideBoard(Vector2Int pos)
     {
         return pos.x >= 0 &&
@@ -49,7 +54,13 @@ public class Board : MonoBehaviour
                pos.y < height;
     }
 
-    // 위치 유효성 검사
+    /// <summary>
+    /// 위치 유효성 검사,
+    /// 이동 가능 여부 판단 함수
+    /// </summary>
+    /// <param name="cells"></param>
+    /// <param name="position"></param>
+    /// <returns></returns>
     public static bool IsValidPosition(Vector2Int[] cells, Vector2Int position)
     {
         foreach (Vector2Int cell in cells)
@@ -66,7 +77,12 @@ public class Board : MonoBehaviour
         return true;
     }
 
-    // 블록 고정
+    /// <summary>
+    /// 블록이 바닥에 닿아 고정될 때 호출되는 함수
+    /// </summary>
+    /// <param name="block"></param>
+    /// <param name="cells"></param>
+    /// <param name="position"></param>
     public static void AddToGrid(Transform block, Vector2Int[] cells, Vector2Int position)
     {
         for (int i = 0; i < cells.Length; i++)
@@ -82,7 +98,9 @@ public class Board : MonoBehaviour
         ClearLines();
     }
 
-    // 줄 삭제
+    /// <summary>
+    /// 전체 행(y)을 순회하며 줄이 꽉 찼는지 검사하고, 찼다면 DeleteLine과 ShiftDown을 실행하는 함수
+    /// </summary>
     public static void ClearLines()
     {
         for (int y = 0; y < height; y++)
@@ -94,8 +112,16 @@ public class Board : MonoBehaviour
                 y--;
             }
         }
+
+        // 줄 삭제가 모두 끝난 뒤, 빈 테트로미노 정리(한 프레임 내에 일어나서 다음 블록이 고정될 때 처리됨)
+        CleanupOrphanedTetrominos();
     }
 
+    /// <summary>
+    /// 특정 행(y)의 모든 x 좌표에 블록이 있는지 확인하고, 하나라도 비어있으면 false를 반환하는 함수
+    /// </summary>
+    /// <param name="y"></param>
+    /// <returns></returns>
     static bool IsLineFull(int y)
     {
         for (int x = 0; x < width; x++)
@@ -107,6 +133,10 @@ public class Board : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// 해당 행의 블록을 화면에서 Destroy하고, grid[,] 배열 데이터를 null로 초기화하는 함수
+    /// </summary>
+    /// <param name="y"></param>
     static void DeleteLine(int y)
     {
         for (int x = 0; x < width; x++)
@@ -116,6 +146,11 @@ public class Board : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 줄이 사라지면 그 위에 있던 블록들이 아래로 내려와야 함.
+    /// 사라진 줄보다 위에 있는 모든 블록을 한 칸씩 내리고, grid[,] 배열의 데이터 위치도 갱신하는 함수
+    /// </summary>
+    /// <param name="deletedY"></param>
     static void ShiftDown(int deletedY)
     {
         for (int y = deletedY + 1; y < height; y++)
@@ -133,7 +168,28 @@ public class Board : MonoBehaviour
         }
     }
 
-    // 디버그용 그리드 표시
+    /// <summary>
+    /// 빈 테트로미노 정리 함수
+    /// </summary>
+    static void CleanupOrphanedTetrominos()
+    {
+        // 씬에 존재하는 모든 Tetromino 컴포넌트를 찾고
+        Tetromino[] allTetrominos = Object.FindObjectsByType<Tetromino>(FindObjectsSortMode.None);
+
+        foreach (Tetromino t in allTetrominos)
+        {
+            // Tetromino가 가지고 있는 실제 자식(Shape 태그 등) 개수를 세어서
+            // GetComponentsInChildren은 자기 자신도 포함하므로, 1보다 크면 자식이 있다는 뜻
+            if (t.GetComponentsInChildren<Transform>().Length <= 1)
+            {
+                Destroy(t.gameObject);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 게임 실행하지 않아도 Scene뷰에서 보드 경계선 보게 함
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.gray;
@@ -155,6 +211,9 @@ public class Board : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// CreateLine으로 라인랜더러 생성 함수(Start에서)
+    /// </summary>
     void DrawGameGrid()
     {
         // 세로선
@@ -176,6 +235,11 @@ public class Board : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 라인랜더러로 보드 그리는 함수
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
     void CreateLine(Vector3 start, Vector3 end)
     {
         GameObject lineObj = new GameObject("GridLine");

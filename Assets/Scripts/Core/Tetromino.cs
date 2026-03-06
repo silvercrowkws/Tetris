@@ -63,7 +63,7 @@ public class Tetromino : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log("OnMove 호출");
+        //Debug.Log("OnMove 호출");
 
         //moveInput = context.ReadValue<Vector2>();
 
@@ -145,40 +145,6 @@ public class Tetromino : MonoBehaviour
 
     void Rotate()
     {
-        /*// 시계 방향 회전 (x,y → -y,x)
-        for (int i = 0; i < cells.Length; i++)
-        {
-            cells[i] = new Vector2Int(-cells[i].y, cells[i].x);
-        }
-
-        if (!Board.IsValidPosition(cells, tetrominoPosition))
-        {
-            // 실패 시 복구 (반시계 회전)
-            for (int i = 0; i < cells.Length; i++)
-            {
-                cells[i] = new Vector2Int(cells[i].y, -cells[i].x);
-            }
-        }
-        else
-        {
-            // 회전 성공 시 Shape 태그를 가진 자식들 같이 회전
-            shapeRotationZ = (shapeRotationZ + 90) % 360;
-            // 90, 180, 270, 0 반복
-
-            Debug.Log(shapeRotationZ);
-
-            foreach (Transform shape in shapes)
-            {
-                shape.localRotation = Quaternion.Euler(0, 0, shapeRotationZ);
-                Debug.Log("Shape 회전");
-            }
-        }
-
-        UpdateVisualPosition();*/
-
-
-
-
         // 회전
         for (int i = 0; i < cells.Length; i++)
         {
