@@ -9,6 +9,11 @@ public class ControlButtons : MonoBehaviour
     Button[] buttons;
     Spawner spawner;
 
+    /// <summary>
+    /// 어떤 버튼이 클릭되었는지 전달하는 델리게이트
+    /// </summary>
+    public Action<int> onButtonClick;
+
     private void Awake()
     {
         buttons = new Button[4];
@@ -33,7 +38,7 @@ public class ControlButtons : MonoBehaviour
             return;
         }
 
-        Tetromino t = spawner.currentTetromino;
+        /*Tetromino t = spawner.currentTetromino;
 
         switch (index)
         {
@@ -56,6 +61,9 @@ public class ControlButtons : MonoBehaviour
                 Debug.Log("오른쪽");
                 t.Move(Vector2Int.right);
                 break;
-        }
+        }*/
+
+        // 🔥 인덱스만 넘겨주면 Tetromino 내부에서 알아서 처리합니다.
+        spawner.currentTetromino.onButtonClick?.Invoke(index);
     }
 }

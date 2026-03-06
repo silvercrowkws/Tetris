@@ -180,7 +180,8 @@ public class Board : MonoBehaviour
     {
         GameObject lineObj = new GameObject("GridLine");
         lineObj.transform.SetParent(gridParent);
-        lineObj.transform.localPosition = Vector3.zero;
+        Vector3 spawnLinePos = new Vector3(0, 0, -0.1f);
+        lineObj.transform.localPosition = spawnLinePos;
 
         LineRenderer lr = lineObj.AddComponent<LineRenderer>();
 

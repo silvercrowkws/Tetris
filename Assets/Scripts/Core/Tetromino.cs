@@ -20,6 +20,8 @@ public class Tetromino : MonoBehaviour
 
     Transform[] shapes;
 
+    public Action<int> onButtonClick;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -28,26 +30,36 @@ public class Tetromino : MonoBehaviour
         shapes = GetComponentsInChildren<Transform>();
 
         shapes = Array.FindAll(shapes, t => t.CompareTag("Shape"));
+
+        // 자기 자신을 구독?
+        onButtonClick += HandleInput;
     }
 
     private void OnEnable()
     {
         inputActions.MoveInput.Enable();
         inputActions.MoveInput.Move.performed += OnMove;
-        inputActions.MoveInput.AAA.performed += AAA;
     }
 
     private void OnDisable()
     {
         inputActions.MoveInput.Move.performed -= OnMove;
+
+        // 🔥 메모리 관리 및 안전을 위해 구독 해제
+        onButtonClick -= HandleInput;
         inputActions.MoveInput.Disable();
     }
 
-    private void AAA(InputAction.CallbackContext context)
+    private void HandleInput(int index)
     {
-        Debug.Log("A 버튼 누름");
+        switch (index)
+        {
+            case 0: Rotate(); break;
+            case 1: Move(Vector2Int.down); break;
+            case 2: Move(Vector2Int.left); break;
+            case 3: Move(Vector2Int.right); break;
+        }
     }
-
 
     private void OnMove(InputAction.CallbackContext context)
     {
@@ -115,7 +127,7 @@ public class Tetromino : MonoBehaviour
         }
     }
 
-    public bool Move(Vector2Int dir)
+    bool Move(Vector2Int dir)
     {
         Vector2Int newPosition = tetrominoPosition + dir;
 
@@ -131,7 +143,7 @@ public class Tetromino : MonoBehaviour
 
     int shapeRotationZ = 0;
 
-    public void Rotate()
+    void Rotate()
     {
         /*// 시계 방향 회전 (x,y → -y,x)
         for (int i = 0; i < cells.Length; i++)

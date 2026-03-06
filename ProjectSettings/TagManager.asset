@@ -12,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Grid
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Food
     uniqueID: 640693901
+    locked: 0
+  - name: Grid
+    uniqueID: 927781893
     locked: 0
