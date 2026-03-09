@@ -8,6 +8,8 @@ public class Spawner : MonoBehaviour
 
     public Tetromino currentTetromino; // 현재 활성 Tetromino
 
+    GameReadyPanel gameReadyPanel;
+
     private void Awake()
     {
         // Resources/Tetrominos 폴더 안 프리팹 로드
@@ -16,7 +18,24 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        SpawnNext();
+        //SpawnNext(); => GameReadyPanel의 StartButton을 받아서 실행으로 변경
+        gameReadyPanel = FindAnyObjectByType<GameReadyPanel>();
+        gameReadyPanel.onGameStart += OnGameStart;
+    }
+
+    private void OnDisable()
+    {
+        gameReadyPanel.onGameStart -= OnGameStart;
+    }
+
+    private void OnGameStart(bool gameStart)
+    {
+        if(gameStart)
+        {
+            // 게임 시작
+            Debug.Log("게임 시작!");
+            SpawnNext();
+        }
     }
 
     /// <summary>
