@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,11 @@ public class Board : MonoBehaviour
 
     // 보드 데이터 (정수 그리드 기반)
     public static Transform[,] grid = new Transform[width, height];
+
+    /// <summary>
+    /// 삭제된 줄의 개수를 전달하는 델리게이트
+    /// </summary>
+    public static Action<int> onLineClear;
 
     void Start()
     {
@@ -103,6 +109,8 @@ public class Board : MonoBehaviour
     /// </summary>
     public static void ClearLines()
     {
+        int linesCleared = 0;       // 한번에 삭제된 줄 수 기록
+
         for (int y = 0; y < height; y++)
         {
             if (IsLineFull(y))
@@ -110,7 +118,16 @@ public class Board : MonoBehaviour
                 DeleteLine(y);
                 ShiftDown(y);
                 y--;
+
+                linesCleared++;
             }
+        }
+
+        // 삭제된 줄이 하나 이상이면
+        if (linesCleared > 0)
+        {
+            // ScoreUI 클래스에 전달
+            onLineClear?.Invoke(linesCleared);
         }
 
         // 줄 삭제가 모두 끝난 뒤, 빈 테트로미노 정리(한 프레임 내에 일어나서 다음 블록이 고정될 때 처리됨)
@@ -141,7 +158,7 @@ public class Board : MonoBehaviour
     {
         for (int x = 0; x < width; x++)
         {
-            Object.Destroy(grid[x, y].gameObject);
+            Destroy(grid[x, y].gameObject);
             grid[x, y] = null;
         }
     }
@@ -174,7 +191,7 @@ public class Board : MonoBehaviour
     static void CleanupOrphanedTetrominos()
     {
         // 씬에 존재하는 모든 Tetromino 컴포넌트를 찾고
-        Tetromino[] allTetrominos = Object.FindObjectsByType<Tetromino>(FindObjectsSortMode.None);
+        Tetromino[] allTetrominos = FindObjectsByType<Tetromino>(FindObjectsSortMode.None);
 
         foreach (Tetromino t in allTetrominos)
         {
