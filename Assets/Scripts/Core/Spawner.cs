@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Spawner : MonoBehaviour
     public Tetromino currentTetromino; // 현재 활성 Tetromino
 
     GameReadyPanel gameReadyPanel;
+
+    public Image nextTetrominoImage;   // Next 테트로미노 표시용
 
     private void Awake()
     {
@@ -75,6 +78,8 @@ public class Spawner : MonoBehaviour
 
         // 현재 블록으로 등록
         currentTetromino = tetromino;
+
+        UpdateNextTetrominoImage(); // NEXT UI 갱신
     }
 
     private int GetMaxCellY(Vector2Int[] cells)
@@ -102,6 +107,21 @@ public class Spawner : MonoBehaviour
             int temp = bag[i];
             bag[i] = bag[randomIndex];
             bag[randomIndex] = temp;
+        }
+    }
+
+    void UpdateNextTetrominoImage()
+    {
+        if (bag.Count == 0)
+            FillBag();
+
+        int nextIndex = bag[0];
+
+        SpriteRenderer sr = tetrominos[nextIndex].GetComponentInChildren<SpriteRenderer>();
+
+        if (sr != null)
+        {
+            nextTetrominoImage.sprite = sr.sprite;
         }
     }
 }

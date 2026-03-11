@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreUI : MonoBehaviour
 {
@@ -20,10 +21,15 @@ public class ScoreUI : MonoBehaviour
     /// </summary>
     int lineCount = 0;
 
+    /// <summary>
+    /// 레벨업, 줄 파괴 시 보여줄 이미지
+    /// </summary>
+    public GameObject[] eventImages;
+
     private void Awake()
     {
         lvText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        scoreText = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        scoreText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
@@ -42,20 +48,28 @@ public class ScoreUI : MonoBehaviour
         Debug.Log($"한번에 지워진 줄 개수 : {clearLineCount}");
         lineCount += clearLineCount;        // 개수 누적
 
-        // 점수 누적
+        // 한번에 지워진 줄 개수별로 점수 누적 및 처리
         switch( clearLineCount )
         {
             case 1:
                 score += 40;
+                // 싱글
+                StartCoroutine(ShowEventImage(eventImages[1]));
                 break;
             case 2:
                 score += 100;
+                // 더블
+                StartCoroutine(ShowEventImage(eventImages[2]));
                 break;
             case 3:
                 score += 300;
+                // 트리플
+                StartCoroutine(ShowEventImage(eventImages[3]));
                 break;
             case 4:
                 score += 1200;
+                // 테트리스
+                StartCoroutine(ShowEventImage(eventImages[4]));
                 break;
         }
 
@@ -83,9 +97,34 @@ public class ScoreUI : MonoBehaviour
     /// </summary>
     private void LVChange()
     {
-        // LV UP!! 같은 표현 추가하고
+        // LV UP!! 같은 표현 추가
+        StartCoroutine(ShowEventImage(eventImages[0]));
         lvText.text = lv.ToString();
 
         // 난이도 조절은 어떻게 한담?
+    }
+
+    IEnumerator ShowEventImage(GameObject obj)
+    {
+        CanvasGroup canvasGroup = obj.GetComponent<CanvasGroup>();
+
+        obj.SetActive(true);
+        canvasGroup.alpha = 1f;
+
+        // 2초 동안 그대로 유지
+        yield return new WaitForSeconds(2f);
+
+        float time = 0f;
+        float duration = 1f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            canvasGroup.alpha = 1f - (time / duration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0f;
+        obj.SetActive(false);
     }
 }
