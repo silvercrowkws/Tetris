@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Spawner : MonoBehaviour
 {
     private GameObject[] tetrominos;
-    private List<int> bag = new List<int>();
+    public List<int> bag = new List<int>();
 
     public Tetromino currentTetromino; // 현재 활성 Tetromino
 
@@ -122,6 +122,7 @@ public class Spawner : MonoBehaviour
         if (sr != null)
         {
             nextTetrominoImage.sprite = sr.sprite;
+            // 스프라이트들 준비 됬으니까, Adrrass? 어쩌고로 해보자
         }
     }
 }

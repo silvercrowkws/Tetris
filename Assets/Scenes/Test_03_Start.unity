@@ -1875,7 +1875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1064889437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2071,6 +2071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88b45063b6356d45a2a3c95e7746660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bag: 
   currentTetromino: {fileID: 0}
   nextTetrominoImage: {fileID: 1885296224}
 --- !u!4 &1135335411
@@ -3320,8 +3321,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: 425}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 0, y: 425}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1885296224
 MonoBehaviour:
@@ -3343,7 +3344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0ef5ddb0254713b479c40ac48cb0e551, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
