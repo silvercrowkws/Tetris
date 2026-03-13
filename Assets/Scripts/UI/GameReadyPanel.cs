@@ -8,7 +8,7 @@ public class GameReadyPanel : MonoBehaviour
 {
     Button startButton;
 
-    public Action<bool> onGameStart;
+    public Action<bool> onGameReadyPanelGameStart;
 
     CanvasGroup canvasGroup;
 
@@ -24,7 +24,7 @@ public class GameReadyPanel : MonoBehaviour
     {
         Debug.Log("게임 시작 버튼 클릭");
         CanvasGroupCantroll(false);
-        onGameStart?.Invoke(true);
+        onGameReadyPanelGameStart?.Invoke(true);
     }
 
     /// <summary>

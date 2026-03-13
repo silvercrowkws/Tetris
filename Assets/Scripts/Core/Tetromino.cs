@@ -9,7 +9,11 @@ public class Tetromino : MonoBehaviour
     public Vector2Int tetrominoPosition;    // 현재 grid 위치
 
     float fallTime;
-    public float fallSpeed = 1f;
+
+    /// <summary>
+    /// 1초에 1칸 떨어진다 (2가 되면, 2초에 1칸 떨어진다.)
+    /// </summary>
+    public float fallInterval = 1f;
 
     PlayerInputActions inputActions;
 
@@ -22,6 +26,8 @@ public class Tetromino : MonoBehaviour
 
     public Action<int> onButtonClick;
 
+    //GameManager gameManager;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -33,6 +39,11 @@ public class Tetromino : MonoBehaviour
 
         // 자기 자신을 구독?
         onButtonClick += HandleInput;
+    }
+
+    void Start()
+    {
+        UpdateVisualPosition();
     }
 
     private void OnEnable()
@@ -85,13 +96,7 @@ public class Tetromino : MonoBehaviour
         {
             Rotate();
         }
-    }
-
-
-    void Start()
-    {
-        UpdateVisualPosition();
-    }
+    }    
 
     void Update()
     {
@@ -116,7 +121,7 @@ public class Tetromino : MonoBehaviour
 
     void HandleFall()
     {
-        if (Time.time - fallTime >= fallSpeed)
+        if (Time.time - fallTime >= fallInterval)
         {
             if (!Move(Vector2Int.down))
             {

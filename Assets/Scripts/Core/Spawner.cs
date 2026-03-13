@@ -31,12 +31,12 @@ public class Spawner : MonoBehaviour
     {
         //SpawnNext(); => GameReadyPanel의 StartButton을 받아서 실행으로 변경
         gameReadyPanel = FindAnyObjectByType<GameReadyPanel>();
-        gameReadyPanel.onGameStart += OnGameStart;
+        gameReadyPanel.onGameReadyPanelGameStart += OnGameStart;
     }
 
     private void OnDisable()
     {
-        gameReadyPanel.onGameStart -= OnGameStart;
+        gameReadyPanel.onGameReadyPanelGameStart -= OnGameStart;
     }
 
     private void OnGameStart(bool gameStart)
@@ -133,7 +133,7 @@ public class Spawner : MonoBehaviour
             // 스프라이트들 준비 됬으니까, Addressables? 로 해보자
         }*/
         nextTetrominoImage.sprite = tetrominoSprites[nextIndex];
-        Debug.Log(nextIndex);
+        //Debug.Log(nextIndex);
     }
 
     void OnSpritesLoaded(AsyncOperationHandle<IList<Sprite>> handle)
@@ -151,6 +151,6 @@ public class Spawner : MonoBehaviour
         .OrderBy(sprite => sprite.name)
         .ToArray();
 
-        Debug.Log("Loaded sprite count : " + tetrominoSprites.Length);
+        //Debug.Log("Loaded sprite count : " + tetrominoSprites.Length);
     }
 }
