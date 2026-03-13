@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: TetrominoSprite
+  m_EditorClassIdentifier: 
+  m_GroupName: TetrominoSprite
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f6e15cc2a0934b944a260df1df38ccf2
+  m_SerializeEntries:
+  - m_GUID: 171612be440609742a887d491b03b49f
+    m_Address: "Assets/Prefabs/RenderSprite/\u3161\uBE14\uB85D_\uC2A4\uD504\uB77C\uC774\uD2B8.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TetrominoSprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 961664db8947dba459c687a2f3bf2abf
+    m_Address: "Assets/Prefabs/RenderSprite/\u315C\uBE14\uB85D_\uC2A4\uD504\uB77C\uC774\uD2B8.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TetrominoSprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7aef1b950a1c8384e8bbfb24575cfb68
+    m_Address: "Assets/Prefabs/RenderSprite/\u3157\uBE14\uB85D_\uC2A4\uD504\uB77C\uC774\uD2B8.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TetrominoSprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 11c280444af44524cbd699946574a14d
+    m_Address: "Assets/Prefabs/RenderSprite/\u3141\uBE14\uB85D_\uC2A4\uD504\uB77C\uC774\uD2B8.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TetrominoSprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0fd348dc22321f4ba4d3cb814a11da3
+    m_Address: "Assets/Prefabs/RenderSprite/\u3139\uBE14\uB85D_\uC2A4\uD504\uB77C\uC774\uD2B8.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TetrominoSprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f6929a63b8b9f24ab71205a3165caaa
+    m_Address: "Assets/Prefabs/RenderSprite/\u3134\uBE14\uB85D_\uC2A4\uD504\uB77C\uC774\uD2B8.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TetrominoSprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ef5ddb0254713b479c40ac48cb0e551
+    m_Address: "Assets/Prefabs/RenderSprite/\u3163\uBE14\uB85D_\uC2A4\uD504\uB77C\uC774\uD2B8.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TetrominoSprite
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a5c8aa35bfdc1d24289ce1a692bf947c
+    m_Address: "Assets/Prefabs/RenderSprite/\u3131\uBE14\uB85D_\uC2A4\uD504\uB77C\uC774\uD2B8.png"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TetrominoSprite
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cbc91bb09d5f8f24ebfbd8c07ef7f56a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8b890fc232986ab4ab5d68fd506ba77d, type: 2}
+    - {fileID: 11400000, guid: 1d733ea891febe74aa3d76d8ef1d715b, type: 2}

@@ -1875,7 +1875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1064889437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2074,6 +2074,7 @@ MonoBehaviour:
   bag: 
   currentTetromino: {fileID: 0}
   nextTetrominoImage: {fileID: 1885296224}
+  tetrominoSprites: []
 --- !u!4 &1135335411
 Transform:
   m_ObjectHideFlags: 0

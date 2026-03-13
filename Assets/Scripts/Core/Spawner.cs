@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Linq;
 
 public class Spawner : MonoBehaviour
 {
@@ -13,10 +16,15 @@ public class Spawner : MonoBehaviour
 
     public Image nextTetrominoImage;   // Next 테트로미노 표시용
 
+    public Sprite[] tetrominoSprites;   // 테트로미노 스프라이트들 미리 찾기
+
     private void Awake()
     {
         // Resources/Tetrominos 폴더 안 프리팹 로드
         tetrominos = Resources.LoadAll<GameObject>("Tetrominos");
+
+        Addressables.LoadAssetsAsync<Sprite>("TetrominoSprite", null)
+            .Completed += OnSpritesLoaded;
     }
 
     private void Start()
@@ -117,12 +125,32 @@ public class Spawner : MonoBehaviour
 
         int nextIndex = bag[0];
 
-        SpriteRenderer sr = tetrominos[nextIndex].GetComponentInChildren<SpriteRenderer>();
+        /*SpriteRenderer sr = tetrominos[nextIndex].GetComponentInChildren<SpriteRenderer>();
 
         if (sr != null)
         {
             nextTetrominoImage.sprite = sr.sprite;
-            // 스프라이트들 준비 됬으니까, Adrrass? 어쩌고로 해보자
+            // 스프라이트들 준비 됬으니까, Addressables? 로 해보자
+        }*/
+        nextTetrominoImage.sprite = tetrominoSprites[nextIndex];
+        Debug.Log(nextIndex);
+    }
+
+    void OnSpritesLoaded(AsyncOperationHandle<IList<Sprite>> handle)
+    {
+        /*tetrominoSprites = new Sprite[handle.Result.Count];
+
+        for (int i = 0; i < handle.Result.Count; i++)
+        {
+            tetrominoSprites[i] = handle.Result[i];
         }
+
+        Debug.Log("Loaded sprite count : " + tetrominoSprites.Length);*/
+
+        tetrominoSprites = handle.Result
+        .OrderBy(sprite => sprite.name)
+        .ToArray();
+
+        Debug.Log("Loaded sprite count : " + tetrominoSprites.Length);
     }
 }
