@@ -18,6 +18,8 @@ public class Spawner : MonoBehaviour
 
     public Sprite[] tetrominoSprites;   // 테트로미노 스프라이트들 미리 찾기
 
+    GameManager gameManager;
+
     private void Awake()
     {
         // Resources/Tetrominos 폴더 안 프리팹 로드
@@ -30,23 +32,23 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         //SpawnNext(); => GameReadyPanel의 StartButton을 받아서 실행으로 변경
-        gameReadyPanel = FindAnyObjectByType<GameReadyPanel>();
-        gameReadyPanel.onGameReadyPanelGameStart += OnGameStart;
+        //gameReadyPanel = FindAnyObjectByType<GameReadyPanel>(); => 게임매니저와 연결로 변경
+        //gameReadyPanel.onGameReadyPanelGameStart += OnGameStart;
+
+        gameManager = GameManager.Instance;
+        gameManager.onGameStart += OnGameStart;
     }
 
     private void OnDisable()
     {
-        gameReadyPanel.onGameReadyPanelGameStart -= OnGameStart;
+        //gameReadyPanel.onGameReadyPanelGameStart -= OnGameStart;
     }
 
-    private void OnGameStart(bool gameStart)
+    private void OnGameStart()
     {
-        if(gameStart)
-        {
-            // 게임 시작
-            Debug.Log("게임 시작!");
-            SpawnNext();
-        }
+        // 게임 시작
+        Debug.Log("게임 시작!");
+        SpawnNext();
     }
 
     /// <summary>
@@ -70,6 +72,8 @@ public class Spawner : MonoBehaviour
         GameObject newBlock = Instantiate(tetrominos[index]);
 
         Tetromino tetromino = newBlock.GetComponent<Tetromino>();
+
+        DefControl(tetromino);       // 테트로미노의 속도 조절
 
         // 🔥 중앙 X 위치
         int spawnX = Board.width / 2;
@@ -152,5 +156,35 @@ public class Spawner : MonoBehaviour
         .ToArray();
 
         //Debug.Log("Loaded sprite count : " + tetrominoSprites.Length);
+    }
+
+    /// <summary>
+    /// 레벨에 따라 난이도 조절 함수
+    /// </summary>
+    private void DefControl(Tetromino tetromino)
+    {
+        float interval = 1;
+        switch (gameManager.Level)
+        {
+            case 1:
+                interval = 1;
+                break;
+            case 2:
+                interval = 0.75f;
+                break;
+            case 3:
+                interval = 0.5f;
+                break;
+            case 4:
+                interval = 0.25f;
+                break;
+            case 5:
+                interval = 0.125f;
+                break;
+            default:
+                interval = 0.125f;
+                break;
+        }
+        tetromino.fallInterval = interval;
     }
 }

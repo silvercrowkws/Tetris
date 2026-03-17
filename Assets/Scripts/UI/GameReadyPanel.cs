@@ -8,6 +8,9 @@ public class GameReadyPanel : MonoBehaviour
 {
     Button startButton;
 
+    /// <summary>
+    /// true면 게임 시작
+    /// </summary>
     public Action<bool> onGameReadyPanelGameStart;
 
     CanvasGroup canvasGroup;

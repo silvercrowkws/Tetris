@@ -104,6 +104,9 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         Board.onLineClear += OnLineClear;
+
+        gameReadyPanel = FindAnyObjectByType<GameReadyPanel>();
+        gameReadyPanel.onGameReadyPanelGameStart += OnGameReadyPanelGameStart;
     }
 
     private void OnDisable()
@@ -142,19 +145,25 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
 
-        if (lineCount > 9)
+        /*if (lineCount > 9)
         {
-            lineCount -= 10;        // 만약 누적 개수가 10이상이면 10을 빼고
-            Level += 1;                // 레벨 증가
-        }
+            lineCount -= 10;            // 만약 누적 개수가 10이상이면 10을 빼고
+            Level += 1;                 // 레벨 증가
+            Score += 500;               // 레벨 업 추가 점수
+        }*/
 
-        /*// 레벨업 테스트용
+        // 레벨업 테스트용
         if (lineCount > 1)
         {
-            lineCount -= 2;        // 만약 누적 개수가 10이상이면 10을 빼고
-            Level += 1;                // 레벨 증가
-        }*/
+            lineCount -= 2;             // 만약 누적 개수가 2이상이면 2를 빼고
+            Level += 1;                 // 레벨 증가
+            Score += 500;               // 레벨업 추가 점수
+        }
     }
 
-
+    private void OnGameReadyPanelGameStart(bool tf)
+    {
+        Debug.Log("게임매니저가 게임 시작 확인");
+        GameState = GameState.GameStart;
+    }
 }
