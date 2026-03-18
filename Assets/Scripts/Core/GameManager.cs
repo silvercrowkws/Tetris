@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 게임상태
@@ -109,9 +110,17 @@ public class GameManager : Singleton<GameManager>
         gameReadyPanel.onGameReadyPanelGameStart += OnGameReadyPanelGameStart;
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     private void OnDisable()
     {
-        Board.onLineClear -= OnLineClear;
+        // 여기 게임매니저는 사라지지 않으니 OnDisable에서 연결이 끊기지 않음
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        /*Board.onLineClear -= OnLineClear;
+        gameReadyPanel.onGameReadyPanelGameStart -= OnGameReadyPanelGameStart;*/
     }
 
     private void OnLineClear(int clearLineCount)
@@ -165,5 +174,25 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("게임매니저가 게임 시작 확인");
         GameState = GameState.GameStart;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
+    {
+        switch (scene.buildIndex)
+        {
+            case 0:
+                Board.onLineClear -= OnLineClear;
+
+                GameReadyPanel panel = FindAnyObjectByType<GameReadyPanel>();
+                if (panel != null)
+                {
+                    panel.onGameReadyPanelGameStart -= OnGameReadyPanelGameStart;
+                    panel.onGameReadyPanelGameStart += OnGameReadyPanelGameStart;
+                }
+
+                // 다시 연결
+                Board.onLineClear += OnLineClear;
+                break;
+        }
     }
 }

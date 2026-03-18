@@ -14,7 +14,8 @@ public class Spawner : MonoBehaviour
 
     GameReadyPanel gameReadyPanel;
 
-    public Image nextTetrominoImage;   // Next 테트로미노 표시용
+    InfoImage infoImage;
+    Image nextTetrominoImage;   // Next 테트로미노 표시용
 
     public Sprite[] tetrominoSprites;   // 테트로미노 스프라이트들 미리 찾기
 
@@ -37,11 +38,15 @@ public class Spawner : MonoBehaviour
 
         gameManager = GameManager.Instance;
         gameManager.onGameStart += OnGameStart;
+
+        infoImage = FindAnyObjectByType<InfoImage>();
+        nextTetrominoImage = infoImage.transform.GetChild(1).GetComponent<Image>();
     }
 
     private void OnDisable()
     {
         //gameReadyPanel.onGameReadyPanelGameStart -= OnGameStart;
+        gameManager.onGameStart -= OnGameStart;
     }
 
     private void OnGameStart()
@@ -63,35 +68,46 @@ public class Spawner : MonoBehaviour
 
     public void SpawnNext()
     {
-        if (bag.Count == 0)
-            FillBag();
+        if(gameManager.GameState == GameState.GameStart)
+        {
+            if (bag.Count == 0)
+                FillBag();
 
-        int index = bag[0];
-        bag.RemoveAt(0);
+            int index = bag[0];
+            bag.RemoveAt(0);
 
-        GameObject newBlock = Instantiate(tetrominos[index]);
+            GameObject newBlock = Instantiate(tetrominos[index]);
 
-        Tetromino tetromino = newBlock.GetComponent<Tetromino>();
+            Tetromino tetromino = newBlock.GetComponent<Tetromino>();
 
-        DefControl(tetromino);       // 테트로미노의 속도 조절
+            DefControl(tetromino);       // 테트로미노의 속도 조절
 
-        // 🔥 중앙 X 위치
-        int spawnX = Board.width / 2;
+            // 🔥 중앙 X 위치
+            int spawnX = Board.width / 2;
 
-        // 🔥 블록의 가장 높은 cell.y 계산
-        int maxCellY = GetMaxCellY(tetromino.cells);
+            // 🔥 블록의 가장 높은 cell.y 계산
+            int maxCellY = GetMaxCellY(tetromino.cells);
 
-        // 🔥 화면 위에서 정확히 시작하도록 보정
-        int spawnY = Board.height - 1 - maxCellY;
+            // 🔥 화면 위에서 정확히 시작하도록 보정
+            int spawnY = Board.height - 1 - maxCellY;
 
-        tetromino.tetrominoPosition = new Vector2Int(spawnX, spawnY);
+            tetromino.tetrominoPosition = new Vector2Int(spawnX, spawnY);
 
-        tetromino.UpdateVisualPosition();
+            // 새 블록이 떨어질 공간이 없으면 게임 종료
+            if (!Board.IsValidPosition(tetromino.cells, tetromino.tetrominoPosition))
+            {
+                gameManager.GameState = GameState.GameEnd;
+                Destroy(tetromino.gameObject);
+                return;
+            }
 
-        // 현재 블록으로 등록
-        currentTetromino = tetromino;
+            tetromino.UpdateVisualPosition();
 
-        UpdateNextTetrominoImage(); // NEXT UI 갱신
+            // 현재 블록으로 등록
+            currentTetromino = tetromino;
+
+            UpdateNextTetrominoImage(); // NEXT UI 갱신
+        }
     }
 
     private int GetMaxCellY(Vector2Int[] cells)
