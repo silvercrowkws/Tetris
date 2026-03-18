@@ -46,7 +46,7 @@ public class Spawner : MonoBehaviour
     private void OnDisable()
     {
         //gameReadyPanel.onGameReadyPanelGameStart -= OnGameStart;
-        gameManager.onGameStart -= OnGameStart;
+        gameManager.onGameStart -= OnGameStart; 
     }
 
     private void OnGameStart()
