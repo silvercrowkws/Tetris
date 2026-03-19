@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Test_05_Burp.unity
+    guid: 6a388bc3f627fd94b8ab28c03a5bbf1d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: fb942b2ed82005c4f8d0a4a985ba3ced,
       type: 2}
