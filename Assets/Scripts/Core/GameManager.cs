@@ -104,10 +104,10 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        Board.onLineClear += OnLineClear;
+        //Board.onLineClear += OnLineClear; => 씬 이동시 연결로 수정
 
-        gameReadyPanel = FindAnyObjectByType<GameReadyPanel>();
-        gameReadyPanel.onGameReadyPanelGameStart += OnGameReadyPanelGameStart;
+        //gameReadyPanel = FindAnyObjectByType<GameReadyPanel>();
+        //gameReadyPanel.onGameReadyPanelGameStart += OnGameReadyPanelGameStart;
     }
 
     private void OnEnable()
@@ -128,6 +128,7 @@ public class GameManager : Singleton<GameManager>
         currentClearLineCount = clearLineCount;     // 현재 지워진 줄 개수 전달
         Debug.Log($"한번에 지워진 줄 개수 : {clearLineCount}");
         lineCount += clearLineCount;        // 개수 누적
+        Debug.Log($"누적된 개수: {lineCount}");
 
         // 한번에 지워진 줄 개수별로 점수 누적 및 처리
         switch (clearLineCount)
@@ -154,20 +155,20 @@ public class GameManager : Singleton<GameManager>
                 break;
         }
 
-        /*if (lineCount > 9)
+        if (lineCount > 9)
         {
             lineCount -= 10;            // 만약 누적 개수가 10이상이면 10을 빼고
             Level += 1;                 // 레벨 증가
             Score += 500;               // 레벨 업 추가 점수
-        }*/
+        }
 
-        // 레벨업 테스트용
+        /*// 레벨업 테스트용
         if (lineCount > 1)
         {
             lineCount -= 2;             // 만약 누적 개수가 2이상이면 2를 빼고
             Level += 1;                 // 레벨 증가
             Score += 500;               // 레벨업 추가 점수
-        }
+        }*/
     }
 
     private void OnGameReadyPanelGameStart(bool tf)
@@ -183,15 +184,17 @@ public class GameManager : Singleton<GameManager>
             case 0:
                 Board.onLineClear -= OnLineClear;
 
-                GameReadyPanel panel = FindAnyObjectByType<GameReadyPanel>();
-                if (panel != null)
+                gameReadyPanel = FindAnyObjectByType<GameReadyPanel>();
+                if (gameReadyPanel != null)
                 {
-                    panel.onGameReadyPanelGameStart -= OnGameReadyPanelGameStart;
-                    panel.onGameReadyPanelGameStart += OnGameReadyPanelGameStart;
+                    gameReadyPanel.onGameReadyPanelGameStart -= OnGameReadyPanelGameStart;
+                    gameReadyPanel.onGameReadyPanelGameStart += OnGameReadyPanelGameStart;
                 }
 
                 // 다시 연결
                 Board.onLineClear += OnLineClear;
+                lineCount = 0;      // 누적된 개수 초기화
+                Debug.Log($"누적된 줄 개수 초기화 {lineCount}");
                 break;
         }
     }

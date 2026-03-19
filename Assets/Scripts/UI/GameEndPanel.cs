@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameEndPAnel : MonoBehaviour
@@ -63,6 +64,14 @@ public class GameEndPAnel : MonoBehaviour
         Debug.Log("재시작 버튼 클릭");
 
         gameManager.GameState = GameState.Ready;
+
+        // 1. 기존 보드 데이터 및 오브젝트 완전 삭제
+        Board.ClearBoard();
+
+        // 2. 점수 초기화 등 나머지 로직
+        gameManager.Score = 0;
+        gameManager.Level = 1;
+
         SceneManager.LoadScene(0);
     }
 }

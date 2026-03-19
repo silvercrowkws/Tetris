@@ -280,4 +280,34 @@ public class Board : MonoBehaviour
         lr.useWorldSpace = false;
         lr.sortingOrder = 100;
     }
+
+    public static void ClearBoard()
+    {
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                if (grid[x, y] != null)
+                {
+                    // 그리드에 등록된 각 블록(자식) 오브젝트 파괴
+                    Destroy(grid[x, y].gameObject);
+                    grid[x, y] = null;
+                }
+            }
+        }
+        
+        CleanupOrphanedTetrominos2();
+    }
+
+    /// <summary>
+    /// 보드에 남은 테트로미노들을 깨끗이 정리하는 함수
+    /// </summary>
+    public static void CleanupOrphanedTetrominos2()
+    {
+        Tetromino[] tetrominos = FindObjectsOfType<Tetromino>();
+        foreach (Tetromino t in tetrominos)
+        {
+            GameObject.Destroy(t.gameObject);
+        }
+    }
 }

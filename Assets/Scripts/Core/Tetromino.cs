@@ -222,6 +222,6 @@ public class Tetromino : MonoBehaviour
         Board.AddToGrid(transform, cells, tetrominoPosition); 
         enabled = false;        // 스크립트 비활성화 처리
 
-        FindObjectOfType<Spawner>().SpawnNext();        // 잠기면 다음 블록을 바로 스폰해버리는데,
+        FindObjectOfType<Spawner>().SpawnNext();
     }
 }

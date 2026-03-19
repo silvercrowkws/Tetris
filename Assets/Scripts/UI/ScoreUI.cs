@@ -42,6 +42,7 @@ public class ScoreUI : MonoBehaviour
     private void OnDisable()
     {
         gameManager.onScoreChange -= ScoreChange;
+        gameManager.onLevelChange -= LVChange;
     }
 
     /// <summary>
