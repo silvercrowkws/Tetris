@@ -152,7 +152,16 @@ public class Spawner : MonoBehaviour
             nextTetrominoImage.sprite = sr.sprite;
             // 스프라이트들 준비 됬으니까, Addressables? 로 해보자
         }*/
-        nextTetrominoImage.sprite = tetrominoSprites[nextIndex];
+
+        // 만약 레벨이 5 이하면 다음 테트로미노 보여주고
+        if (gameManager.Level < 6)
+        {
+            nextTetrominoImage.sprite = tetrominoSprites[nextIndex];
+        }
+        else
+        {
+            nextTetrominoImage.sprite = null;
+        }
         //Debug.Log(nextIndex);
     }
 
@@ -192,13 +201,18 @@ public class Spawner : MonoBehaviour
                 interval = 0.5f;
                 break;
             case 4:
-                interval = 0.25f;
+                //interval = 0.25f; -> 난이도 수정
+                interval = 0.4f;
                 break;
             case 5:
-                interval = 0.125f;
+                //interval = 0.125f; -> 난이도 수정
+                interval = 0.3f;
                 break;
             default:
-                interval = 0.125f;
+                interval = 0.3f;
+                // 이후에 레벨업에서는 미리보기를 없애버리는 난이도 추가
+                // UpdateNextTetrominoImage 함수에서 nextTetrominoImage 로 다음 테트로미노를 보여주는 건데,
+                // 여기에 레벨이 5를 초과하면 보여주지 않는 부분 추가
                 break;
         }
         tetromino.fallInterval = interval;
